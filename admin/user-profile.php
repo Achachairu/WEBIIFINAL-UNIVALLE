@@ -1,13 +1,13 @@
-<?php 
-$user=  $_SESSION['user_login'];
-  $corepage = explode('/', $_SERVER['PHP_SELF']);
-    $corepage = end($corepage);
-    if ($corepage!=='index.php') {
-      if ($corepage==$corepage) {
+<?php
+$user = $_SESSION['user_login'];
+$corepage = explode('/', $_SERVER['PHP_SELF']);
+$corepage = end($corepage);
+if ($corepage !== 'index.php') {
+    if ($corepage == $corepage) {
         $corepage = explode('.', $corepage);
-       header('Location: index.php?page='.$corepage[0]);
-     }
+        header('Location: index.php?page=' . $corepage[0]);
     }
+}
 ?>
 <h1 class="text-primary"><i class="fas fa-user"></i>  Perfil de Usuario</h1>
 <nav aria-label="breadcrumb">
@@ -16,11 +16,11 @@ $user=  $_SESSION['user_login'];
      <li class="breadcrumb-item active" aria-current="page">Perfil de Usuario</li>
   </ol>
 </nav>
-<?php 
-  $query = mysqli_query($db_con, "SELECT * FROM `users` WHERE `username` ='$user';");
-  $row = mysqli_fetch_array($query);
+<?php
+$query = mysqli_query($db_con, "SELECT * FROM `users` WHERE `username` ='$user';");
+$row = mysqli_fetch_array($query);
 
- ?>
+?>
 <div class="row">
   <div class="col-sm-6">
     <table class="table table-bordered">
@@ -56,18 +56,18 @@ $user=  $_SESSION['user_login'];
     <a href="images/<?php echo $row['photo']; ?>">
       <img class="img-thumbnail" id="imguser" src="images/<?php echo $row['photo']; ?>" width="200px">
     </a>
-    <?php 
-        if (isset($_POST['upphoto'])) {
-          unlink('images/'.$row['photo']);
-          $photofile = $_FILES['userphoto']['tmp_name'];
-          $upphoto = $user.date('s-m-y-m-Y').$_FILES['userphoto']['name'];
-          if (mysqli_query($db_con, "UPDATE `users` SET `photo` = '$upphoto' WHERE `users`.`username` = '$user';")) {
-            move_uploaded_file($photofile, 'images/'.$upphoto);
-          }else{
-            echo "Profile Picture Not Uploaded";
-          }
-        }
-     ?><br>
+    <?php
+if (isset($_POST['upphoto'])) {
+    unlink('images/' . $row['photo']);
+    $photofile = $_FILES['userphoto']['tmp_name'];
+    $upphoto = $user . date('s-m-y-m-Y') . $_FILES['userphoto']['name'];
+    if (mysqli_query($db_con, "UPDATE `users` SET `photo` = '$upphoto' WHERE `users`.`username` = '$user';")) {
+        move_uploaded_file($photofile, 'images/' . $upphoto);
+    } else {
+        echo "Profile Picture Not Uploaded";
+    }
+}
+?><br>
     <form method="POST" enctype="multipart/form-data">
       <input type="file" name="userphoto" required="" id="photo"><br>
       <input class="btn btn-info" type="submit" name="upphoto" value="Subir Fotografía">

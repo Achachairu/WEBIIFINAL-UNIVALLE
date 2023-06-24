@@ -1,0 +1,63 @@
+/* Estilos generales */
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    margin-top: 50px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .alert {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    margin-top: 20px;
+  }
+  
+  p {
+    margin-top: 20px;
+  }
+  
+  /* Animaciones */
+  .animate__pulse {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  /* Estilos adicionales */
+  .alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+  
+  
+  
+  /* Estilos responsivos */
+  @media (max-width: 576px) {
+    .container {
+      margin-top: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .btn {
+      margin-top: 15px;
+    }
+    
+    p {
+      margin-top: 15px;
+    }
+  }
+  
